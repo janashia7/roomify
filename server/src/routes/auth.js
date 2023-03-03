@@ -7,10 +7,8 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
   const { email, password, full_name } = req.body;
   try {
-    console.log(email, password, full_name, 'emailss');
     const user = new User({ email, password, full_name });
     await user.save();
-    console.log(user);
 
     res.status(201).json({
       success: true,
@@ -37,10 +35,10 @@ router.post('/login', async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) throw new Error('user not found');
+    if (!user) throw new Error('Incorrect Credentials');
 
     const isMatch = await user.checkPassword(password);
-    if (!isMatch) throw new Error('Incorrect password');
+    if (!isMatch) throw new Error('Incorrect Credentials');
 
     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET);
 

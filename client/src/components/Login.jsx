@@ -27,11 +27,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Register = () => {
+const Login = () => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
   const [message, setMessage] = useState('');
 
   const navigate = useNavigate();
@@ -40,13 +39,13 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const resp = await axios.post('http://localhost:5000/api/auth/register', {
+      const resp = await axios.post('http://localhost:5000/api/auth/login', {
         email,
         password,
-        full_name: fullName,
       });
 
       if (resp.data.success) {
+        localStorage.setItem('token', resp.data.data);
         navigate('/chat');
       }
     } catch (err) {
@@ -57,51 +56,35 @@ const Register = () => {
   return (
     <Container className={classes.container} maxWidth="xs">
       <Typography component="h1" variant="h5">
-        Register
+        Sign in
       </Typography>
       <form className={classes.form} onSubmit={handleSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="fullName"
-              label="Full Name"
-              name="fullName"
-              autoComplete="name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-          </Grid>
-        </Grid>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         {message && (
           <Typography variant="subtitle1" color="error">
             {message}
@@ -114,22 +97,22 @@ const Register = () => {
           color="primary"
           className={classes.submit}
         >
-          Sign Up
+          Sign In
         </Button>
         <Grid container justifyContent="flex-end" spacing={1}>
           <Grid item>
             <Typography variant="body2" color="textSecondary">
-              Already have an account?
+              Don't have an account?
             </Typography>
           </Grid>
           <Grid item>
             <Link
-              href="/"
+              href="/register"
               variant="body2"
               color="primary"
               underline="none"
             >
-              Sign in
+              Sign up
             </Link>
           </Grid>
         </Grid>
@@ -138,4 +121,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
