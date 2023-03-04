@@ -19,6 +19,7 @@ import {
   SettingsRounded as SettingsIcon,
 } from '@mui/icons-material';
 import { Divider } from '@material-ui/core';
+import { Link, Outlet } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {
@@ -81,86 +82,93 @@ const Sidebar = () => {
   };
 
   return (
-    <Box className={classes.sidebar}>
-      <Box className={classes.sidebarLogo}>
-        <img width={100} src={logo} alt="Logo" />
+    <Box sx={{ flexDirection: 'row' }}>
+      <Box className={classes.sidebar} >
+        <Box className={classes.sidebarLogo}>
+          <img width={100} src={logo} alt="Logo" />
+        </Box>
+        <Divider />
+        <List className={classes.list}>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.iconWrapper}
+            component={Link}
+            to="messaging"
+            onClick={() => handleButtonClick(0)}
+          >
+            <ListItemIcon className={classes.iconListWrapper}>
+              <ChatIcon sx={activeButton === 0 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.iconWrapper}
+            onClick={() => handleButtonClick(1)}
+          >
+            <ListItemIcon className={classes.iconListWrapper}>
+              <HomeIcon sx={activeButton === 1 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.iconWrapper}
+            onClick={() => handleButtonClick(2)}
+          >
+            <ListItemIcon className={classes.iconListWrapper}>
+              <QuizIcon sx={activeButton === 2 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.iconWrapper}
+            onClick={() => handleButtonClick(3)}
+          >
+            <ListItemIcon className={classes.iconListWrapper}>
+              <FileIcon sx={activeButton === 3 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.iconWrapper}
+            onClick={() => handleButtonClick(4)}
+          >
+            <ListItemIcon className={classes.iconListWrapper}>
+              <AddContactIcon sx={activeButton === 4 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.iconWrapper}
+            onClick={() => handleButtonClick(5)}
+          >
+            <ListItemIcon className={classes.iconListWrapper}>
+              <VideoCameraIcon sx={activeButton === 5 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.iconWrapper}
+            onClick={() => handleButtonClick(6)}
+          >
+            <ListItemIcon className={classes.iconListWrapper}>
+              <CameraIcon sx={activeButton === 6 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+        </List>
+        <Box className={classes.settingsIconWrapper}>
+          <ListItemButton
+            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            className={classes.settingsIconWrapper}
+            onClick={() => handleButtonClick(7)}
+          >
+            <ListItemIcon className={classes.iconWrapper}>
+              <SettingsIcon sx={activeButton === 7 && { color: 'black' }} />
+            </ListItemIcon>
+          </ListItemButton>
+        </Box>
       </Box>
-      <Divider />
-      <List className={classes.list}>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.iconWrapper}
-          onClick={() => handleButtonClick(0)}
-        >
-          <ListItemIcon className={classes.iconListWrapper}>
-            <ChatIcon sx={activeButton === 0 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.iconWrapper}
-          onClick={() => handleButtonClick(1)}
-        >
-          <ListItemIcon className={classes.iconListWrapper}>
-            <HomeIcon sx={activeButton === 1 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.iconWrapper}
-          onClick={() => handleButtonClick(2)}
-        >
-          <ListItemIcon className={classes.iconListWrapper}>
-            <QuizIcon sx={activeButton === 2 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.iconWrapper}
-          onClick={() => handleButtonClick(3)}
-        >
-          <ListItemIcon className={classes.iconListWrapper}>
-            <FileIcon sx={activeButton === 3 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.iconWrapper}
-          onClick={() => handleButtonClick(4)}
-        >
-          <ListItemIcon className={classes.iconListWrapper}>
-            <AddContactIcon sx={activeButton === 4 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.iconWrapper}
-          onClick={() => handleButtonClick(5)}
-        >
-          <ListItemIcon className={classes.iconListWrapper}>
-            <VideoCameraIcon sx={activeButton === 5 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.iconWrapper}
-          onClick={() => handleButtonClick(6)}
-        >
-          <ListItemIcon className={classes.iconListWrapper}>
-            <CameraIcon sx={activeButton === 6 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
-      </List>
-      <Box className={classes.settingsIconWrapper}>
-        <ListItemButton
-          sx={{ justifyContent: 'center', borderRadius: '50%' }}
-          className={classes.settingsIconWrapper}
-          onClick={() => handleButtonClick(7)}
-        >
-          <ListItemIcon className={classes.iconWrapper}>
-            <SettingsIcon sx={activeButton === 7 && { color: 'black' }} />
-          </ListItemIcon>
-        </ListItemButton>
+      <Box >
+        <Outlet />
       </Box>
     </Box>
   );

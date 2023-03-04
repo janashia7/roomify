@@ -18,7 +18,13 @@ const JoinRoomForm = ({ socket, setJoined }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container spacing={2} alignItems="center" justifyContent="center">
+      <Grid
+        container
+        spacing={2}
+        alignItems="center"
+        justifyContent="center"
+        style={{ maxWidth: 'calc(100% - 80px)', marginLeft: 80 }}
+      >
         <Grid item xs={12} sm={6}>
           <TextField
             fullWidth
