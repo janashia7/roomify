@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Box,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  Typography,
-} from '@mui/material';
+import { Box, List, ListItemButton, ListItemIcon } from '@mui/material';
 import logo from '../images/logo.png';
 import {
   ForumRounded as ChatIcon,
@@ -43,10 +37,9 @@ const useStyles = makeStyles((theme) => ({
   },
   iconWrapper: {
     width: '80px',
-    height: '80px',
     display: 'flex',
     justifyContent: 'center',
-    height: '15%',
+    height: '80px',
     paddingTop: 20,
     paddingBottom: 20,
   },
@@ -67,10 +60,11 @@ const useStyles = makeStyles((theme) => ({
   // },
   settingsIconWrapper: {
     displayL: 'flex',
+    width: '80px',
+    height: '80px',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 'auto',
-    paddingTop: 20,
   },
 }));
 
@@ -83,7 +77,7 @@ const Sidebar = () => {
 
   return (
     <Box sx={{ flexDirection: 'row' }}>
-      <Box className={classes.sidebar} >
+      <Box className={classes.sidebar}>
         <Box className={classes.sidebarLogo}>
           <img width={100} src={logo} alt="Logo" />
         </Box>
@@ -161,13 +155,13 @@ const Sidebar = () => {
             className={classes.settingsIconWrapper}
             onClick={() => handleButtonClick(7)}
           >
-            <ListItemIcon className={classes.iconWrapper}>
-              <SettingsIcon sx={activeButton === 7 && { color: 'black' }} />
+            <ListItemIcon className={classes.settingsIconWrapper}>
+              <SettingsIcon style={{marginBottom: "10px"}} sx={activeButton === 7 && { color: 'black' }} />
             </ListItemIcon>
           </ListItemButton>
         </Box>
       </Box>
-      <Box >
+      <Box>
         <Outlet />
       </Box>
     </Box>
