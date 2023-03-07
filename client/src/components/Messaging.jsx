@@ -8,8 +8,15 @@ import {
   ListItemText,
   Typography,
   makeStyles,
+  Divider,
 } from '@material-ui/core';
-import { Scrollbars } from 'react-custom-scrollbars-2';
+import Carousel from 'react-material-ui-carousel';
+import { Slide } from 'react-material-ui-carousel';
+
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 
@@ -48,6 +55,8 @@ const onlineUsers = [
   { id: 3, name: 'Peter' },
   { id: 4, name: 'Mary' },
   { id: 5, name: 'Peter' },
+  { id: 6, name: 'Mary' },
+  { id: 7, name: 'Peter' },
 ];
 
 const recentMessages = [
@@ -99,22 +108,22 @@ const useStyles = makeStyles((theme) => ({
     width: '60px',
   },
   onlineNowListItem: {
+    justifyContent: 'center',
     flexDirection: 'column',
   },
   recentMessagesSection: {
     display: 'flex',
     flexDirection: 'column',
     marginTop: theme.spacing(-1),
-    width: '330px',
+    width: '336px',
   },
   recentMessagesTitle: {
     fontWeight: 'bold',
     marginLeft: theme.spacing(3),
-    marginBottom: "10px"
+    marginBottom: '10px',
   },
   recentMessagesList: {
     marginTop: theme.spacing(-1),
-
     marginLeft: theme.spacing(2),
     '&::-webkit-scrollbar': {
       width: '8px',
@@ -133,14 +142,68 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: 'calc(100vh - 280px)',
   },
   avatar: {
+    marginLeft: '3px',
     width: '50px',
     height: '50px',
+  },
+  carousel: {
+    width: 320,
+    marginLeft: theme.spacing(2),
+  },
+  sliderContainer: {
+    position: 'relative',
+    width: 330,
+    height: 82,
+    marginTop:8,
+    marginBottom:8,
+    '& .slick-slider':{
+       width:306,
+       left:28
+    },
+    '& .slick-prev::before, .slick-next::before': {
+      color: 'white',
+      fontSize: '25px',
+      display: 'block',
+      paddingTop: '2.5px',
+      backgroundImage: `radial-gradient(circle at center, black 0%, black 30%, rgba(255, 0, 0, 0) 50%)`,
+    },
+    '& .slick-prev.slick-disabled:before, .slick-next.slick-disabled:before': {
+      opacity: '0',
+      cursor: 'default',
+    },
+    '& .slick-next': {
+      right: '-5px',
+    },
+    '& .slick-prev': {
+      left: '-5px',
+      zIndex: '1',
+    },
+    '& .slick-prev, .slick-next': {
+      top: 23,
+      width: '25px',
+      height: '25px',
+    },
   },
 }));
 
 const Messaging = () => {
   const classes = useStyles();
   const [activeUsers, setActiveUsers] = useState(onlineUsers);
+
+  const chunks = activeUsers.reduce((acc, curr, index) => {
+    const chunkIndex = Math.floor(index / 5);
+    acc[chunkIndex] = acc[chunkIndex] || [];
+    acc[chunkIndex].push(curr);
+    return acc;
+  }, []);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+  };
 
   return (
     <Box className={classes.root}>
@@ -151,28 +214,37 @@ const Messaging = () => {
         </Typography>
       </Box>
 
+      <Divider style={{ margin: '-20px 0px 20px 24px', width: '306px' }} />
+
       <Box className={classes.onlineNowSection}>
         <Typography variant="h6" className={classes.onlineNowTitle}>
           Online Now
         </Typography>
-        <List className={classes.onlineNowUserList}>
-          {activeUsers.map((user) => (
-            <ListItem className={classes.onlineNowListItem} key={user.id}>
-              <ListItemAvatar style={{ marginLeft: '16px' }}>
-                <StyledBadge
-                  overlap="circular"
-                  anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                  variant="dot"
+        <div className={classes.sliderContainer}>
+          <Slider {...settings}>
+            {activeUsers.map((item) => (
+              <Box>
+                <ListItemAvatar
+                  style={{ display: 'flex', justifyContent: 'center' }}
                 >
-                  <Avatar className={classes.avatar}>
-                    {user.name.charAt(0)}
-                  </Avatar>
-                </StyledBadge>
-              </ListItemAvatar>
-              <ListItemText primary={user.name} />
-            </ListItem>
-          ))}
-        </List>
+                  <StyledBadge
+                    overlap="circular"
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    variant="dot"
+                  >
+                    <Avatar style={{ width: '50px', height: '50px' }}>
+                      {item.name.charAt(0)}
+                    </Avatar>
+                  </StyledBadge>
+                </ListItemAvatar>
+                <ListItemText
+                  style={{ display: 'flex', justifyContent: 'center' }}
+                  primary={item.name}
+                />
+              </Box>
+            ))}
+          </Slider>
+        </div>
       </Box>
 
       <Box className={classes.recentMessagesSection}>
@@ -189,6 +261,7 @@ const Messaging = () => {
                 </Avatar>
               </ListItemAvatar>
               <ListItemText
+                style={{ paddingLeft: '10px' }}
                 primary={message.name}
                 secondary={message.message}
               />
