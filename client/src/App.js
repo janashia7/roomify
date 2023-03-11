@@ -16,8 +16,8 @@ const App = () => {
       <Routes>
         <Route index element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="messaging" element={<Messaging />} />
         <Route path="chat" element={<Sidebar />}>
+          <Route path="messaging" element={<Messaging />} />
           {/* TODO: Add messaging component */}
         </Route>
       </Routes>

@@ -19,17 +19,17 @@ const useStyles = makeStyles((theme) => ({
   sidebar: {
     width: 80,
     height: '100vh',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
+    // boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
     position: 'fixed',
     left: 0,
     top: 0,
   },
   sidebarLogo: {
-    marginTop: 10,
+    marginTop: 6,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -156,7 +156,10 @@ const Sidebar = () => {
             onClick={() => handleButtonClick(7)}
           >
             <ListItemIcon className={classes.settingsIconWrapper}>
-              <SettingsIcon style={{marginBottom: "10px"}} sx={activeButton === 7 && { color: 'black' }} />
+              <SettingsIcon
+                style={{ marginBottom: '10px' }}
+                sx={activeButton === 7 && { color: 'black' }}
+              />
             </ListItemIcon>
           </ListItemButton>
         </Box>

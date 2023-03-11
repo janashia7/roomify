@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     paddingTop: theme.spacing(2),
+    marginLeft: theme.spacing(8),
     alignItems: 'flex-start',
   },
   profileSection: {
@@ -154,11 +155,11 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: 330,
     height: 82,
-    marginTop:8,
-    marginBottom:8,
-    '& .slick-slider':{
-       width:306,
-       left:28
+    marginTop: 8,
+    marginBottom: 8,
+    '& .slick-slider': {
+      width: 306,
+      left: 28,
     },
     '& .slick-prev::before, .slick-next::before': {
       color: 'white',
@@ -190,28 +191,26 @@ const Messaging = () => {
   const classes = useStyles();
   const [activeUsers, setActiveUsers] = useState(onlineUsers);
 
-  const chunks = activeUsers.reduce((acc, curr, index) => {
-    const chunkIndex = Math.floor(index / 5);
-    acc[chunkIndex] = acc[chunkIndex] || [];
-    acc[chunkIndex].push(curr);
-    return acc;
-  }, []);
-
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 5,
   };
 
   return (
     <Box className={classes.root}>
       <Box className={classes.profileSection}>
         <Avatar className={classes.avatar} />
-        <Typography style={{ marginLeft: '16px' }} variant="subtitle1">
-          Current User
-        </Typography>
+        <Box>
+          <Typography style={{ marginLeft: '16px' }} variant="subtitle1">
+            Current Userhgjjuuuuuuuu
+          </Typography>
+          <Typography style={{ marginLeft: '16px',color:"InactiveCaptionText" }} variant="subtitle2">
+            My Account
+          </Typography>
+        </Box>
       </Box>
 
       <Divider style={{ margin: '-20px 0px 20px 24px', width: '306px' }} />
