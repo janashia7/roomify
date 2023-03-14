@@ -6,7 +6,7 @@ import Chat from './components/ChatTest';
 import io from 'socket.io-client';
 import JoinRoomForm from './components/JoinRoomForm';
 import Sidebar from './components/Sidebar';
-import Messaging from './components/Messaging';
+import Messaging from './components/messaging/Messaging';
 
 const socket = io('http://localhost:5000');
 

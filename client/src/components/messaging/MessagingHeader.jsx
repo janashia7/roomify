@@ -10,8 +10,6 @@ import {
   makeStyles,
   Divider,
 } from '@material-ui/core';
-import Carousel from 'react-material-ui-carousel';
-import { Slide } from 'react-material-ui-carousel';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -49,41 +47,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const onlineUsers = [
-  { id: 1, name: 'John' },
-  { id: 2, name: 'Mary' },
-  { id: 3, name: 'Peter' },
-  { id: 4, name: 'Mary' },
-  { id: 5, name: 'Peter' },
-  { id: 6, name: 'Mary' },
-  { id: 7, name: 'Peter' },
-];
-
-const recentMessages = [
-  { id: 1, name: 'John', message: 'Hello, how are you?' },
-  { id: 2, name: 'Mary', message: 'Hi there!' },
-  { id: 3, name: 'John', message: 'I am doing good, thanks.' },
-  { id: 1, name: 'John', message: 'Hello, how are you?' },
-  { id: 2, name: 'Mary', message: 'Hi there!' },
-  { id: 3, name: 'John', message: 'I am doing good, thanks.' },
-  { id: 1, name: 'John', message: 'Hello, how are you?' },
-  { id: 2, name: 'Mary', message: 'Hi there!' },
-  { id: 3, name: 'John', message: 'I am doing good, thanks.' },
-  { id: 1, name: 'John', message: 'Hello, how are you?' },
-  { id: 2, name: 'Mary', message: 'Hi there!' },
-  { id: 3, name: 'John', message: 'I am doing good, thanks.' },
-  { id: 2, name: 'Mary', message: 'Hi there!' },
-  { id: 3, name: 'John', message: 'I am doing good, thanks.' },
-  { id: 2, name: 'Mary', message: 'Hi there!' },
-  { id: 3, name: 'John', message: 'I am doing good, thanks.' },
-  { id: 2, name: 'Mary', message: 'Hi there!' },
-  { id: 3, name: 'John', message: 'I am doing good, thanks.' },
-  // ...
-];
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    width:330,
     flexDirection: 'column',
     justifyContent: 'center',
     paddingTop: theme.spacing(2),
@@ -187,9 +154,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Messaging = () => {
+const MessagingHeader = ({ activeUsers, recentMessages }) => {
   const classes = useStyles();
-  const [activeUsers, setActiveUsers] = useState(onlineUsers);
 
   const settings = {
     dots: false,
@@ -205,9 +171,12 @@ const Messaging = () => {
         <Avatar className={classes.avatar} />
         <Box>
           <Typography style={{ marginLeft: '16px' }} variant="subtitle1">
-            Current Userhgjjuuuuuuuu
+            Giorgi Janashia
           </Typography>
-          <Typography style={{ marginLeft: '16px',color:"InactiveCaptionText" }} variant="subtitle2">
+          <Typography
+            style={{ marginLeft: '16px', color: 'InactiveCaptionText' }}
+            variant="subtitle2"
+          >
             My Account
           </Typography>
         </Box>
@@ -272,4 +241,4 @@ const Messaging = () => {
   );
 };
 
-export default Messaging;
+export default MessagingHeader;
