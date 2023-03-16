@@ -35,25 +35,22 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     height: 80,
   },
-  iconWrapper: {
-    width: '80px',
-    display: 'flex',
-    justifyContent: 'center',
-    height: '80px',
-    paddingTop: 20,
-    paddingBottom: 20,
-  },
 
-  list: { height: '50%' },
+  list: {
+    height: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
   iconListWrapper: {
     display: 'flex',
     justifyContent: 'center',
   },
   icon: { backgroundColor: 'black' },
   settingsIconWrapper: {
-    displayL: 'flex',
-    width: '80px',
-    height: '80px',
+    display: 'flex',
+    paddingBottom: '20px',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 'auto',
@@ -76,7 +73,12 @@ const Sidebar = () => {
         <Divider />
         <List className={classes.list}>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            sx={{
+              justifyContent: 'center',
+              borderRadius: '20px',
+              width: 50,
+              maxHeight: 40,
+            }}
             className={classes.iconWrapper}
             component={Link}
             to="messaging"
@@ -87,7 +89,12 @@ const Sidebar = () => {
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            sx={{
+              justifyContent: 'center',
+              borderRadius: '20px',
+              width: 50,
+              maxHeight: 40,
+            }}
             className={classes.iconWrapper}
             onClick={() => handleButtonClick(1)}
           >
@@ -96,7 +103,12 @@ const Sidebar = () => {
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            sx={{
+              justifyContent: 'center',
+              borderRadius: '20px',
+              width: 50,
+              maxHeight: 40,
+            }}
             className={classes.iconWrapper}
             onClick={() => handleButtonClick(2)}
           >
@@ -105,7 +117,12 @@ const Sidebar = () => {
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            sx={{
+              justifyContent: 'center',
+              borderRadius: '20px',
+              width: 50,
+              maxHeight: 40,
+            }}
             className={classes.iconWrapper}
             onClick={() => handleButtonClick(3)}
           >
@@ -114,7 +131,12 @@ const Sidebar = () => {
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            sx={{
+              justifyContent: 'center',
+              borderRadius: '20px',
+              width: 50,
+              maxHeight: 40,
+            }}
             className={classes.iconWrapper}
             onClick={() => handleButtonClick(4)}
           >
@@ -123,7 +145,12 @@ const Sidebar = () => {
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            sx={{
+              justifyContent: 'center',
+              borderRadius: '20px',
+              width: 50,
+              maxHeight: 40,
+            }}
             className={classes.iconWrapper}
             onClick={() => handleButtonClick(5)}
           >
@@ -132,7 +159,12 @@ const Sidebar = () => {
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
+            sx={{
+              justifyContent: 'center',
+              borderRadius: '20px',
+              width: 50,
+              maxHeight: 40,
+            }}
             className={classes.iconWrapper}
             onClick={() => handleButtonClick(6)}
           >
@@ -143,13 +175,17 @@ const Sidebar = () => {
         </List>
         <Box className={classes.settingsIconWrapper}>
           <ListItemButton
-            sx={{ justifyContent: 'center', borderRadius: '50%' }}
-            className={classes.settingsIconWrapper}
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '20px',
+              maxWidth: 50,
+              maxHeight: 40,
+            }}
             onClick={() => handleButtonClick(7)}
           >
-            <ListItemIcon className={classes.settingsIconWrapper}>
+            <ListItemIcon className={classes.iconListWrapper}>
               <SettingsIcon
-                style={{ marginBottom: '10px' }}
                 sx={activeButton === 7 && { color: 'black' }}
               />
             </ListItemIcon>

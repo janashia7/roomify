@@ -6,9 +6,10 @@ const ChatWindow = ({ children }) => {
     <Box
       style={{
         display: 'flex',
-        flexDirection: 'row',
-        height: '100%',
+        flexDirection: 'column',
+        height: '100vh',
         width: '60%',
+        marginLeft:8,
         backgroundColor:"#dbdad7"
       }}
     >

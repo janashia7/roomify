@@ -50,7 +50,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    width:330,
+    width: 330,
     flexDirection: 'column',
     justifyContent: 'center',
     paddingTop: theme.spacing(2),
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: theme.spacing(-1),
-    width: '336px',
+    width: '338px',
   },
   recentMessagesTitle: {
     fontWeight: 'bold',
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#F5F5F5',
     },
     overflowY: 'auto',
-    maxHeight: 'calc(100vh - 280px)',
+    maxHeight: 'calc(100vh - 263px)',
   },
   avatar: {
     marginLeft: '3px',
