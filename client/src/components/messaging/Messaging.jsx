@@ -59,7 +59,14 @@ const Messaging = () => {
   const [activeUsers, setActiveUsers] = useState(onlineUsers);
 
   return (
-    <Box style={{ display: 'flex', flexDirection:"row", height: '100%', width: '100%' }}>
+    <Box
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        height: '100%',
+        width: '100%',
+      }}
+    >
       <MessagingHeader
         activeUsers={activeUsers}
         recentMessages={recentMessages}

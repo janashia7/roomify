@@ -5,6 +5,7 @@ import { useRef } from 'react';
 
 const useStyles = makeStyles({
   MessagesList: {
+    display: 'flex',
     position: 'relative',
     '&::-webkit-scrollbar': {
       width: '8px',
@@ -24,8 +25,8 @@ const useStyles = makeStyles({
   },
   scrollButton: {
     position: 'fixed',
-    bottom: 16,
-    right: 16,
+    top: '85%',
+    left: '20%',
   },
 });
 
@@ -43,11 +44,7 @@ const ChatMessages = ({ messages }) => {
         {/* {messages.map((msg, i) => (
         <div key={i}>{msg}</div>
       ))} */}
-        <div ref={messagesEndRef} /> {/* Add ref to scroll to */}
       </List>
-      <Button onClick={scrollToBottom} className={classes.scrollButton}>
-        Scroll to bottom
-      </Button>
     </Box>
   );
 };

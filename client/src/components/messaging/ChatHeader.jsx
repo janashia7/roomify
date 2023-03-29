@@ -17,7 +17,7 @@ import {
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'violet',
+    backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
   groupAvatar: {
     '& .MuiAvatarGroup-avatar': {
-      border: '2px solid #dbdad7 !important',
+      border: '2px solid white !important',
       width: 35,
       height: 35,
     },
@@ -65,7 +65,7 @@ const ChatHeader = () => {
           </Typography>
         </Box>
       </Box>
-      <Box style={{width:"300px"}} className={classes.listItem}>
+      <Box style={{ width: '300px' }} className={classes.listItem}>
         <Box>
           <AvatarGroup className={classes.groupAvatar} total={24}>
             <Avatar
@@ -86,7 +86,7 @@ const ChatHeader = () => {
           </AvatarGroup>
         </Box>
 
-        <List  className={classes.listItem}>
+        <List className={classes.listItem}>
           <ListItemButton
             sx={{
               display: 'flex',
